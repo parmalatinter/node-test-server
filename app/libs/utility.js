@@ -1,23 +1,23 @@
 exports.set_body = (req) => JSON.stringify(
     {
-        req:
+        req :
             {
-                method :req.method,
+                method : req.method,
                 params : req.params,
-                query :req.query,
-                body : req.body
+                query  : req.query,
+                body   : req.body
             }
     }
 );
 
 exports.set_options = (req) => {
     return {
-        req:
+        req :
             {
-                method :req.method,
+                method : req.method,
                 params : req.params,
-                query :req.query,
-                body : req.body
+                query  : req.query,
+                body   : req.body
             }
     };
 };

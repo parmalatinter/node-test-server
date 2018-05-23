@@ -1,27 +1,27 @@
-const express = require('express');
-const path = require('path');
-const bodyParser = require('body-parser');
+const express        = require('express');
+const path           = require('path');
+const bodyParser     = require('body-parser');
 const methodOverride = require('method-override');
-const PORT = process.env.PORT || 5000;
-const app = express();
+const PORT           = process.env.PORT || 5000;
+const app            = express();
 
 app
     .use(express.static(path.join(__dirname, 'public')))
     .use(bodyParser.urlencoded({
-        extended: true
+        extended : true
     }))
     .use((req, res, next) => {
-        try{
+        try {
             bodyParser.json();
             next();
-        }catch(e) {
+        } catch (e) {
             res.status(500).send(e.message);
         }
     })
     .use(bodyParser.json())
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'ejs')
-    .use(methodOverride((req, res) => {
+    .use(methodOverride((req) => {
         if (req.body && typeof req.body === 'object' && '_method' in req.body) {
             const method = req.body._method;
             delete req.body._method;
