@@ -1,7 +1,4 @@
-exports.post = (req, res) => {
-    res.render('pages/index', {req: {method :req.method, params : req.params, query :req.query}});
-};
+const utility = require("../libs/utility");
 
-exports.get = (req, res) => {
-    res.render('pages/index', {req: {method :req.method, params : req.params, query :req.query}});
-};
+exports.post = (req, res) => res.render('pages/index', utility.set_options(req));
+exports.get = (req, res) => res.render('pages/index',utility.set_options(req));

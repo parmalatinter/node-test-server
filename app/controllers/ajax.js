@@ -1,2 +1,4 @@
-exports.post = (req, res) => res.send(JSON.stringify({req: {method :req.method, params : req.params, query :req.query}}));
-exports.get = (req, res) => res.send(JSON.stringify({req: {method :req.method, params : req.params, query :req.query}}));
+const utility = require("../libs/utility");
+
+exports.post = (req, res) => res.send(utility.set_body(req));
+exports.get = (req, res) => res.send(utility.set_body(req));
